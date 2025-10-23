@@ -1,4 +1,4 @@
-# NodeHost (Golang) - Minimal Prototype
+#  AppLoft - Minimal Prototype
 
 This is a minimal prototype of a Node.js hosting platform written in Go.
 
