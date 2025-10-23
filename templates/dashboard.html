@@ -1,0 +1,13 @@
+<!doctype html>
+<html><body>
+<h2>Dashboard</h2>
+<p><a href="/upload">Upload new app</a> | <a href="/logout">Logout</a></p>
+<h3>Your apps</h3>
+{{range .Apps}}
+<div>
+<strong>{{.Name}}</strong> - Domain: {{.Domain}} - Port: {{.Port}}
+</div>
+{{else}}
+<p>No apps yet</p>
+{{end}}
+</body></html>

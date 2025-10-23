@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  nodehost:
+    build: .
+    image: nodehost:latest
+    container_name: nodehost
+    volumes:
+      - ./templates:/app/templates
+      - ./data.db:/app/data.db
+      - ./apps:/app/apps
+      - /var/run/docker.sock:/var/run/docker.sock  # allow launching containers (optional & dangerous)
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2
+    container_name: caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:
